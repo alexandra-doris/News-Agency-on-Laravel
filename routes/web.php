@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,12 +28,25 @@ Route::get('/admin', function () {
     dd('Welcome to the admin'.' user '.$id);
 });*/
 
-Route::get('/admin/users/{id}', [UserController::class, 'getUser']); //user page
+//Route::get('/admin/users/{id}', [UserController::class, 'getUser']); //user page
 
-Route::get('/admin', [UserController::class, 'showUsers']); //for admin; lists all users
+Route::get('/admin/users/{id}', [UserController::class, 'viewUser']); //view a single user
+
+Route::get('/admin', [UserController::class, 'showUsers'])->name('showusers'); //for admin; lists all users
+
+Route::get('/admin/users', [UserController::class, 'showUsers']);
 
 Route::view('categories', 'categories');
 
-Route::get('/admin/register', [UserController::class, 'registerUser']); //register page
+Route::get('/register', [UserController::class, 'registerUser']); //register page
 
-Route::post('/admin/register', [UserController::class, 'saveUser'])->name('registeruser');
+Route::post('/register', [UserController::class, 'saveUser'])->name('registeruser');
+
+Route::post('/users/update/{id}', [UserController::class, 'updateUser'])->name('updateuser');
+
+Route::post('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteuser');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');//for login
+Route::post('/login', [AuthController::class, 'signin'])->name('signin');
+
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');

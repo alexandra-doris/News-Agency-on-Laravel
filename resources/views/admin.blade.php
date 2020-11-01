@@ -6,7 +6,7 @@
 
 <ul>
     @foreach($users as $user)
-       <li> {{$user->fname}} {{$user->lname}} - {{$user->email}}</li>
+       <li> <a href="/admin/users/{{$user->id}}">{{$user->fname}} {{$user->lname}} - {{$user->email}}</a></li>
     @endforeach
 </ul>
 @endsection

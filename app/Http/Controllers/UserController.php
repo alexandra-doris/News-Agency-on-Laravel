@@ -6,6 +6,8 @@ use App\Models\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\UpdateUser;
 use App\Http\Requests\CreateUser;
@@ -44,30 +46,7 @@ class UserController extends Controller
         return view('users', compact('title', 'user'));
     }
 
-    public function registerUser()
-    {
-        return view('registeruser');
-    }
-
-    public function saveUser(createUser $request) //update User
-    {
-        $user = new User;
-        $user->fname = $request->fname;
-        $user->lname = $request->lname;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->description = $request->description;
-        $user->save();
-
-        //$finduser= User::where('email', $user->email)->first();
-        
-        //$id= $finduser->id;
-        //return view('/admin/users/{id}', compact('id'));
-
-        return redirect()->back()->with('success', 'User has been added successfully');
-    }
-
-    public function updateUser(UpdateUser $request, $id)
+    public function updateUser(UpdateUser $request, $id) //update User
     {
         $user = User::findOrFail($id);
 
@@ -76,6 +55,12 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->description = $request->description;
+        if ($request->file('image')!=NULL)
+        if ($request->file('image')->isValid()){
+            Storage::delete($user->image);
+            $user->image = $request->image->store('public/images/users');
+            $user->image = substr($user->image, strlen('public/'));
+        }
 
         $user->save();
         return redirect()->back()->with('success', 'User has been updated successfuly.');
@@ -100,7 +85,10 @@ class UserController extends Controller
 
     public function showUsers()
     {
-        $users = User::paginate(10);
+        $users = User::simplepaginate(10);
         return view('allusers', compact('users'));
+        //$users = DB::table('users')->simplepaginate(15);
+        //return view('allusers', ['users' => $users]);
     }
+
 }

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\registerController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,10 +17,15 @@ use App\Http\Controllers\AuthController;
 |
 */
 
+Route::get('/test', function () {
+    //dd('welcome');
+    return view('includes/backmaster');
+})->name('backmaster');
+
 Route::get('/', function () {
     //dd('welcome');
     return view('home');
-});
+})->name('home');
 
 Route::get('/admin', function () {
     dd('Welcome to the admin');
@@ -36,11 +43,11 @@ Route::get('/admin', [UserController::class, 'showUsers'])->name('showusers'); /
 
 Route::get('/admin/users', [UserController::class, 'showUsers']);
 
-Route::view('categories', 'categories');
+Route::view('categories', 'categories')->name('categories');
 
-Route::get('/register', [UserController::class, 'registerUser']); //register page
+Route::get('/register', [registerController::class, 'registerUser'])->name('register'); //register page
 
-Route::post('/register', [UserController::class, 'saveUser'])->name('registeruser');
+Route::post('/register', [registerController::class, 'saveUser'])->name('registeruser');
 
 Route::post('/users/update/{id}', [UserController::class, 'updateUser'])->name('updateuser');
 
@@ -50,3 +57,5 @@ Route::get('/login', [AuthController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [AuthController::class, 'signin'])->name('signin');
 
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/dashboard', function(){return view('dashboard');});

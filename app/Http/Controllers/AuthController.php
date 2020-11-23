@@ -26,7 +26,7 @@ class AuthController extends Controller
         {
             return redirect()->intended(route('showusers'));
         }
-        return redirect()->back()->with('danger', 'Login is incorrect');
+        return redirect()->back()->with('danger', 'Login credentials are incorrect');
     }
 
     public function logout()

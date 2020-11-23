@@ -57,7 +57,8 @@ class UserController extends Controller
         $user->description = $request->description;
         if ($request->file('image')!=NULL)
         if ($request->file('image')->isValid()){
-            Storage::delete($user->image);
+            if(strcmp($user->image, "images/users/default-avatar.png")!==0)
+                Storage::delete('public/'.$user->image);
             $user->image = $request->image->store('public/images/users');
             $user->image = substr($user->image, strlen('public/'));
         }
@@ -69,18 +70,19 @@ class UserController extends Controller
 
     public function deleteUser(Request $request, $id)
     {
-        $request->validate([
-            'userid'=>'required'
-        ]);
+        //$request->validate([
+        //    'userid'=>'required'
+        //]);
         
-        if($id == $request->userid)
-        {
-            $user= User::findOrFail($id);
-            $user->delete();
+        
+        $user= User::findOrFail($id);
+        if(strcmp($user->image, "images/users/default-avatar.png")!==0)
+            Storage::delete('public/'.$user->image);
+        $user->delete();
 
-            return redirect('/admin');
-        }
-        return redirect()->back()->with('danger', 'User cannot be deleted, ID is not a match.');
+        return redirect('/admin')->with('success', 'User was deleted successfully.');
+        //}
+        //return redirect()->back()->with('danger', 'User cannot be deleted, ID is not a match.');
     }
 
     public function showUsers()

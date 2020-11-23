@@ -1,7 +1,11 @@
 @extends('includes.backmaster')
 
 @section('content')
-    
+
+@include('includes.validation')
+
+<div class="row justify-content-center">
+    <div class="col-auto">
         <table class="table table-dark table-hover" style="width:800px; text-align:left">
             <tbody>
                 <thead>
@@ -35,6 +39,8 @@
             </tbody>
         </table>
         {{$users->links()}}
+    </div>
+</div>
 @endsection
 
 

@@ -22,17 +22,20 @@
       <li class="nav-item">
         <a class="nav-link" href="{{route('categories')}}">Categories</a>
       </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
         @if(Auth::check())
       <li class="nav-item">
-        <a class="nav-link" href="{{route('showusers')}}">Dashboard</a>
+        <a class="nav-link btn btn-primary" style="margin-right:10px" href="{{route('showusers')}}">Dashboard</a>
       </li>
-      <li class="nav-item">
-        <form method="post" action="{{route('logout')}}">
+      <li class="nav-item" >
+        <!--<form method="post" action="{{route('logout')}}">
         @csrf
             <button type="submit" class="btn btn-primary">Logout</button>
-        </form>
+        </form>-->
+        <a class="nav-link btn btn-secondary" href="{{route('logout')}}">Logout</a>
       </li>
-        <!--<a class="nav-link disabled" href="{{route('logout')}}">Logout</a>-->
+        
         @else
       <li class="nav-item">
         <a class="nav-link" href="{{route('register')}}">Register</a>

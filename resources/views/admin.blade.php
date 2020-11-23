@@ -2,6 +2,7 @@
 
 @section('content')
 <h1>{{$title}}</h1>
+
 <p>Existing users:</p>
 
 <ul>

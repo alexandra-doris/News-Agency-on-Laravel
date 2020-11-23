@@ -49,13 +49,17 @@ Route::get('/register', [registerController::class, 'registerUser'])->name('regi
 
 Route::post('/register', [registerController::class, 'saveUser'])->name('registeruser');
 
+Route::get('/admin/newuser', [registerController::class, 'registerUserAdmin'])->name('registeradmin'); //register for admin
+
+Route::post('/admin/newuser', [registerController::class, 'saveUser'])->name('adduser');
+
 Route::post('/users/update/{id}', [UserController::class, 'updateUser'])->name('updateuser');
 
-Route::post('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteuser');
+Route::get('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteuser');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');//for login
 Route::post('/login', [AuthController::class, 'signin'])->name('signin');
 
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/dashboard', function(){return view('dashboard');});

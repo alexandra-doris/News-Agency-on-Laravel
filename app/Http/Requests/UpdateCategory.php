@@ -13,7 +13,7 @@ class UpdateCategory extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class UpdateCategory extends FormRequest
     {
         return [
             //
+            'title' => 'required',
+            'slug' => 'required|unique:categories,slug,'.request()->id
         ];
     }
 }

@@ -21,23 +21,28 @@
         <input type="password" name="password" value="{{$user->password}}"></br>
         <label for="description">Description:</label></br>
         <textarea type="text" name="description" >{{$user->description}}</textarea></br>
+        @if ((Auth::user()->admin)===1)
         <label for="image">Profile Image:</label></br>
         <input type="file" name="image"></br>
+        @elseif ((Auth::user()->id)===$user->id)
+        <label for="image">Profile Image:</label></br>
+        <input type="file" name="image"></br>
+        @endif
         @if((Auth::user()->admin)===1)
         <input type="radio" id="editor" name="admin" value=1 @if($user->admin===1) checked="checked" @endif>
         <label for="admin" style="padding-top:10px">Editor</label>
         <input type="radio" id="writer" name="admin" value=0  @if($user->admin===0) checked="checked" @endif>
         <label for="admin" style="padding-top:10px">Writer</label>
         @endif
-        @if((Auth::user()->admin)===1)
+        @if ((Auth::user()->admin)===1)
         </br><button type="submit" class="btn btn-primary">Save changes</button>
-        @elseif((Auth::user()->id)===$user->id)
+        @elseif ((Auth::user()->id)===$user->id)
         </br><button type="submit" class="btn btn-primary">Save changes</button>
         @endif
     </form>
-    @if((Auth::user()->admin)===1)
+    @if ((Auth::user()->admin)===1)
     </br><a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-primary">Delete user</a>
-    @elseif(Auth::user()->id)===$user->id)
+    @elseif ((Auth::user()->id)===$user->id)
     </br><a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-primary">Delete user</a>
     @endif
 

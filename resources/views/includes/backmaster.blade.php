@@ -52,8 +52,8 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Add New Article</a>
-                <a class="collapse-item" href="cards.html">View All Articles</a>
+                <a class="collapse-item" href="/admin/newpost">Add New Article</a>
+                <a class="collapse-item" href="/admin/post">View All Articles</a>
             </div>
         </div>
     </li>
@@ -66,8 +66,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="buttons.html">Add New Category</a>
-                <a class="collapse-item" href="cards.html">View All Categories</a>
+                <a class="collapse-item" href="/admin/newcategory">Add New Category</a>
+                <a class="collapse-item" href="/admin/category">View All Categories</a>
             </div>
         </div>
     </li>

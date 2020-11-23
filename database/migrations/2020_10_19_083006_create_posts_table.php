@@ -16,12 +16,16 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title',100);
-            $table->string('subtitle',200);
-            $table->mediumtext('body');
+            $table->string('slug')->unique();
+            $table->string('subtitle',200)->nullable();
+            $table->mediumtext('body')->nullable();
             $table->string('image');
             $table->integer('posted_by');
-            $table->status('status'); //validated or not
+            $table->boolean('status'); //validated or not
+            $table->integer('category_id')->nullable();
             $table->timestamps();
+
+            //$table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

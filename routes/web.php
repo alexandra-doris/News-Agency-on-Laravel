@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\registerController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PostController;
+
 
 
 /*
@@ -17,25 +20,10 @@ use App\Http\Controllers\registerController;
 |
 */
 
-Route::get('/test', function () {
-    //dd('welcome');
-    return view('includes/backmaster');
-})->name('backmaster');
-
 Route::get('/', function () {
     //dd('welcome');
     return view('home');
 })->name('home');
-
-Route::get('/admin', function () {
-    dd('Welcome to the admin');
-});
-
-/*Route::get('/admin/users/{id}', function ($id) {
-    dd('Welcome to the admin'.' user '.$id);
-});*/
-
-//Route::get('/admin/users/{id}', [UserController::class, 'getUser']); //user page
 
 Route::get('/admin/users/{id}', [UserController::class, 'viewUser']); //view a single user
 
@@ -53,12 +41,44 @@ Route::get('/admin/newuser', [registerController::class, 'registerUserAdmin'])->
 
 Route::post('/admin/newuser', [registerController::class, 'saveUser'])->name('adduser');
 
-Route::post('/users/update/{id}', [UserController::class, 'updateUser'])->name('updateuser');
+Route::post('/users/update/{id}', [UserController::class, 'updateUser'])->name('updateuser'); //update user || view user
 
 Route::get('/users/delete/{id}', [UserController::class, 'deleteUser'])->name('deleteuser');
 
+//category
+
+Route::get('/admin/newcategory', [CategoryController::class, 'createCategory'])->name('categoryadmin'); //create category
+
+Route::post('/admin/newcategory', [CategoryController::class, 'saveCategory'])->name('addcategory');
+
+Route::get('/admin/category', [CategoryController::class, 'showCategories'])->name('allcategories'); //for admin; lists all categories
+
+Route::get('/admin/category/{id}', [CategoryController::class, 'viewCategory']); //view a single category
+
+Route::post('/admin/category/update/{id}', [CategoryController::class, 'updateCategory'])->name('updatecategory'); //update user || view user
+
+Route::get('/admin/category/delete/{id}', [CategoryController::class, 'deleteCategory'])->name('deletecategory');
+
+//post
+
+Route::get('/admin/newpost', [PostController::class, 'createPost'])->name('postadmin'); //create post
+
+Route::post('/admin/newpost', [PostController::class, 'savePost'])->name('addpost');
+
+Route::get('/admin/post', [PostController::class, 'showPosts'])->name('allposts'); //for admin; lists all posts
+
+Route::get('/admin/post/{id}', [PostController::class, 'viewPost']); //view a single post
+
+Route::post('/admin/post/update/{id}', [PostController::class, 'updatePost'])->name('updatepost'); //update post || view post
+
+Route::get('/admin/post/delete/{id}', [PostController::class, 'deletePost'])->name('deletepost');
+
+// login
+
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');//for login
 Route::post('/login', [AuthController::class, 'signin'])->name('signin');
+
+//logout
 
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 

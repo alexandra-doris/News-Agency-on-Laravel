@@ -8,56 +8,15 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 <body>
-    
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="{{route('home')}}">NewsAgency</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('categories')}}">Categories</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto">
-        @if(Auth::check())
-      <li class="nav-item">
-        <a class="nav-link btn btn-primary" style="margin-right:10px" href="{{route('showusers')}}">Dashboard</a>
-      </li>
-      <li class="nav-item" >
-        <!--<form method="post" action="{{route('logout')}}">
-        @csrf
-            <button type="submit" class="btn btn-primary">Logout</button>
-        </form>-->
-        <a class="nav-link btn btn-secondary" href="{{route('logout')}}">Logout</a>
-      </li>
-        
-        @else
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('register')}}">Register</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{route('login')}}">Login</a>
-      </li>
-        @endif
-      
-    </ul>
-  </div>
-</nav>
 
-
+    <header class="header">@include('includes.header')</header>
 
     @yield('scripts')
-   
     <div class="container" style="padding-top:20px">
     @yield('content')
     </div>
 
-    <footer></footer>
+    <footer class="main-footer" style="background:linear-gradient(200deg, rgba(24,164,246, 0.8),rgba(144,89,255, 0.8)), url({{asset('/storage/images/design/newspaper.jpg')}}); background-size: cover">@include('includes.footer')</footer>
     <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>

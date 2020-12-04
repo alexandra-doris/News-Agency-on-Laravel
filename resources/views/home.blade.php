@@ -2,8 +2,18 @@
 
 @section('content')
 <h1>News Agency</h1>
-@endsection
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
+<h1>News Agency</h1>
 
+@endsection
 
 @section('scripts')
 <script></script>

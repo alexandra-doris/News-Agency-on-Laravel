@@ -10,6 +10,8 @@
 // Import login form
 @import 'signin';
 
+@import 'style.blue';
+
 // Fort Awesome
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/brands';
@@ -19,6 +21,13 @@
 // Import dashboard
 //@import 'dashboard';
 
-body{
-    background: teal;
-}
+//body{
+//    background: teal;
+//}
+ .btn-grad{
+    background:linear-gradient(200deg, rgba(24,164,246, 0.8),rgba(144,89,255, 0.8))!important;
+ }
+
+ .btn-grad:hover{
+    background:#858796!important;
+ }

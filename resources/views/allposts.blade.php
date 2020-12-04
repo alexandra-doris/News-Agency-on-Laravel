@@ -25,12 +25,12 @@
                         <td>{{$post->title}}</td>
                         <td>{{$post->slug}}</td>
                         <td>@if($post->status===1)
-                        Public
+                        <div style="color:#d4edda">Public</div>
                         @else
-                        Draft
+                        <div style="color:#f8d7da">Draft</div>
                         @endif</td>
                         <td>{{$post->posted_by}}</td>
-                        <td><a href="/admin/post/{{$post->id}}">View post</a></td>
+                        <td><a class="btn-grad" href="/admin/post/{{$post->id}}">Edit post</a> <a class="btn-grad" href="/post/{{$post->slug}}">View post</a></td>
                     </tr>          
                 @endforeach
                 </tbody>

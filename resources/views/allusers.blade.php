@@ -32,7 +32,7 @@
                         @else
                             <td>Writer</td>
                         @endif
-                        <td><a href="/admin/users/{{$user->id}}">View user</a></td>
+                        <td><a class="btn-grad" href="/admin/users/{{$user->id}}">Edit user</a></td>
                     </tr>          
                 @endforeach
                 </tbody>

@@ -22,7 +22,7 @@
                         <td>{{$cat->id}}</td>
                         <td>{{$cat->title}}</td>
                         <td>{{$cat->slug}}</td>
-                        <td><a href="/admin/category/{{$cat->id}}">View category</a></td>
+                        <td><a class="btn-grad" href="/admin/category/{{$cat->id}}">Edit category</a> <a class="btn-grad" href="/category/{{$cat->slug}}">View category</a></td>
                     </tr>          
                 @endforeach
                 </tbody>

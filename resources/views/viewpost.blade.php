@@ -1,7 +1,7 @@
 @extends('includes.backmaster')
 
 @section('content')
-    <h1>{{$post->title}}</h1>
+    <h1><a style="color:#18a4f6" href="/post/{{$post->slug}}">{{$post->title}}</a></h1>
 
     <img src="{{asset('/storage/'.$post->image)}}" width="auto" height="200px" style="border:5px solid #858796"/></br></br>
 
@@ -18,14 +18,14 @@
         <label for="subtitle">Subitle:</label><br>
         <input type="text" name="subtitle" value="{{$post->subtitle}}"></br>
         <label for="body">Body:</label><br>
-        <textarea type="text" name="body">{{$post->body}}</textarea></br>
+        <textarea class="description" type="text" name="body">{{$post->body}}</textarea></br>
         <label for="category_id" class="control-block">Choose a category:</label></br>
         <select class="drop" id="category_id" name="category_id">
               @foreach($cats as $cat)
               <option value="{{ $cat->id }}" @if ($cat->id===$post->category_id) selected @endif>{{ $cat->title }}</option>
               @endforeach
         </select></br>
-        <label for="posted_by">Author ID:</label><br>
+        <label for="posted_by">Author ID (can't be modified):</label><br>
         <input type="text" name="posted_by" value="{{$post->posted_by}}" readonly="readonly"></br>
         @if ((Auth::user()->admin)===1)
         <label for="image">Post Image:</label></br>
@@ -79,5 +79,12 @@ aria-hidden="true">
 
 
 @section('scripts')
-
+<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector:'textarea.description',
+        width: 900,
+        height: 300
+    });
+</script>
 @endsection

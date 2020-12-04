@@ -1,7 +1,7 @@
 @extends('includes.backmaster')
 
 @section('content')
-    <h1>{{$cat->title}}</h1>
+    <h1><a style="color:#18a4f6" href="/category/{{$cat->slug}}">{{$cat->title}}</a></h1>
 
     <img src="{{asset('/storage/'.$cat->image)}}" width="auto" height="200px" style="border:5px solid #858796"/></br></br>
 

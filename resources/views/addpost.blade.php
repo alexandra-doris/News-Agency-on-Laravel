@@ -16,13 +16,13 @@
         <label for="subtitle">Subitle:</label><br>
         <input type="text" name="subtitle"></br>
         <label for="body">Body:</label><br>
-        <textarea type="text" name="body"></textarea></br>
+        <textarea class="description" type="text" name="body"></textarea></br>
         <label for="category_id" class="control-block">Choose a category:</label></br>
         <select class="drop" id="category_id" name="category_id">
               @foreach($cats as $cat)
               <option value="{{ $cat->id }}">{{ $cat->title }}</option>
               @endforeach
-        </select>
+        </select></br>
         <label for="image">Post Image:</label></br>
         <input type="file" name="image" id="image"></br>
         @if ((Auth::user()->admin)===1)
@@ -36,8 +36,17 @@
         </div>
     </form>
 
+
 @endsection
 
 
 @section('scripts')
+<script src="{{ asset('node_modules/tinymce/tinymce.js') }}"></script>
+<script>
+    tinymce.init({
+        selector:'textarea.description',
+        width: 900,
+        height: 300
+    });
+</script>
 @endsection

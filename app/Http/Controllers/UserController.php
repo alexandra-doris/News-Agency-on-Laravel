@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Http\Requests\UpdateUser;
 use App\Http\Requests\CreateUser;
+
 
 
 class UserController extends Controller
@@ -87,8 +90,12 @@ class UserController extends Controller
 
     public function showUsers()
     {
-        $users = User::simplepaginate(10);
-        return view('allusers', compact('users'));
+        if(Auth::check()){
+            $users = User::simplepaginate(10);
+            return view('allusers', compact('users'));
+        }
+        return redirect()->route('home');
+
         //$users = DB::table('users')->simplepaginate(15);
         //return view('allusers', ['users' => $users]);
     }

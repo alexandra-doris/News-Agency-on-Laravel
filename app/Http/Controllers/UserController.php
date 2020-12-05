@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -81,6 +82,15 @@ class UserController extends Controller
         $user= User::findOrFail($id);
         if(strcmp($user->image, "images/users/default-avatar.png")!==0)
             Storage::delete('public/'.$user->image);
+
+        //delete all posts
+        $posts= Post::where('posted_by', $user->id)->simplepaginate(10);
+        foreach($posts as $post){
+            if(strcmp($post->image, "images/posts/default-post.png")!==0)
+                Storage::delete('public/'.$post->image);
+            $post->delete();
+        }
+        
         $user->delete();
 
         return redirect('/admin')->with('success', 'User was deleted successfully.');

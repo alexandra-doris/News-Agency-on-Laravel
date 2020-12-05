@@ -23,10 +23,12 @@
         <textarea type="text" name="description"></textarea></br>
         <label for="image">Profile Image:</label></br>
         <input type="file" name="image" id="image"></br>
+        @if((Auth::user()->admin)===1)
         <input type="radio" id="editor" name="admin" value=1>
         <label for="admin" style="padding-top:10px">Editor</label>
         <input type="radio" id="writer" name="admin" value=0 checked="checked">
         <label for="admin" style="padding-top:10px">Writer</label>
+        @endif
 
         </br><button type="submit" class="btn btn-primary">Create user</button>
         </div>

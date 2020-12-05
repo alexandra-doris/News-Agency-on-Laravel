@@ -38,6 +38,8 @@ class PublicController extends Controller
         if($post->status==1 || Auth::check()){
             $user = User::findOrFail($post->posted_by);
             $cat = Category::findOrFail($post->category_id);
+            $post->views = $post->views+1;
+            $post->save();
             return view('post', compact('post', 'cat', 'user'));
         }
         return redirect()->route('home');

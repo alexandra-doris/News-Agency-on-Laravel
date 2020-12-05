@@ -15,7 +15,7 @@
                     <div class="title"><span>{{$user->fname}} {{$user->lname}}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="far fa-clock"></i> {{date('d M Y', strtotime($post->created_at))}}</div>
-                    <div class="views meta-last"><i class="far fa-eye"></i> 500</div>
+                    <div class="views meta-last"><i class="far fa-eye"></i>{{$post->views}}</div>
                   </div>
                 </div>
                 <div class="post-body">{!!$post->body!!}</div>

@@ -10,10 +10,10 @@
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner" role="listbox">
+  <div class="carousel-inner" style="background:rgba(0,0,0, 0.9);" role="listbox">
   @foreach($public_posts->slice(0, 3) as $key => $post)
-  <div class="carousel-item {{$key == 0 ? 'active' : '' }}" style="background:linear-gradient(200deg, rgba(24,164,246, 0.8),rgba(144,89,255, 0.8)), url({{asset('/storage/'.$post->image)}}) no-repeat center center fixed;">
-      <img class="d-block w-100" style="opacity: 0;" src="{{asset('/storage/'.$post->image)}}" alt="{{$post->title}}">
+  <div class="carousel-item {{$key == 0 ? 'active' : '' }}" style="background: url({{asset('/storage/'.$post->image)}})no-repeat center center fixed;">
+      <img class="d-block w-100" style="opacity: 0;" src="{{asset('/storage/'.$post->image)}}" width="auto" height="600px" alt="{{$post->title}}">
       <div class="carousel-caption d-none d-md-block">
         <a style="color:white" href="/post/{{$post->slug}}"><h4>{{$post->title}}</h4></a>
         <p>{{$post->subtitle}}</p>

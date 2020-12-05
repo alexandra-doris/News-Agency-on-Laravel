@@ -27,7 +27,15 @@
             <ul class="navbar-nav ml-auto">
               <li class="nav-item"><a href="{{route('home')}}" class="nav-link active ">{{__('header.home')}}</a>
               </li>
-              <li class="nav-item"><a href="{{route('categories')}}" class="nav-link ">{{__('header.categories')}}</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{__('header.categories')}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  @foreach ($cats as $cat)
+                  <a class="dropdown-item" href="/category/{{$cat->slug}}">{{$cat->title}}</a>
+                  @endforeach
+                </div>
               </li>
               <li class="nav-item"><a href="#" class="nav-link ">{{__('header.about')}}</a>
               </li>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -85,7 +86,17 @@ class CategoryController extends Controller
         $cat= Category::findOrFail($id);
         if(strcmp($cat->image, "images/categories/default-cat.png")!==0)
             Storage::delete('public/'.$cat->image);
+        //delete all posts
+        $posts= Post::where('category_id', $cat->id)->simplepaginate(10);
+        foreach($posts as $post){
+            if(strcmp($post->image, "images/posts/default-post.png")!==0)
+                Storage::delete('public/'.$post->image);
+            $post->delete();
+        }
+        
         $cat->delete();
+
+        
 
         return redirect('/admin/category')->with('success', 'Category was deleted successfully.');
     }

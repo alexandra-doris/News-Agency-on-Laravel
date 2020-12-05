@@ -108,7 +108,7 @@ View::composer(['*'], function($view){
     $users=User::Paginate(10);
     $cats=Category::Paginate(10);
     $posts=Post::orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->simplepaginate(10);
-    $public_posts=Post::where('status', 1)->orderBy('created_at', 'DESC')->simplepaginate(10);
+    $public_posts=Post::where('status', 1)->orderBy('created_at', 'DESC')->simplepaginate(3);
 
     $view->with('auth_user',$auth_user)
     ->with('users',$users)

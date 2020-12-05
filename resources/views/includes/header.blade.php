@@ -29,7 +29,7 @@
               </li>
               <li class="nav-item"><a href="{{route('categories')}}" class="nav-link ">{{__('header.categories')}}</a>
               </li>
-              <li class="nav-item"><a href="post.html" class="nav-link ">{{__('header.about')}}</a>
+              <li class="nav-item"><a href="#" class="nav-link ">{{__('header.about')}}</a>
               </li>
               <li class="nav-item"><a href="#" class="nav-link ">{{__('header.contact')}}</a>
               </li>

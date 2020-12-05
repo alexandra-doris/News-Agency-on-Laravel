@@ -13,7 +13,7 @@
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{date('M d | Y', strtotime($post->created_at))}}</div>
-                    <div class="category"><a href="#">{{$cat->title}}</a></div>
+                    <div class="category"><a href="/category/{{$cat->slug}}">{{$cat->title}}</a></div>
                   </div><a href="/post/{{$post->slug}}">
                     <h3 class="h4">{{$post->title}}</h3></a>
                   <p class="text-muted">{!!Str::limit($post->body, 100)!!}</p>

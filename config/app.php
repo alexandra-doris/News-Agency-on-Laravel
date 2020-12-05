@@ -99,6 +99,7 @@ return [
     * List of alternative languages (not including the one specified as 'locale')
     */
     'alt_langs' => array ('ro', 'de'),
+    'locales' => ['en', 'ro', 'de'],
 
     /**
     *  Prefix of selected locale  - leave empty (set in runtime)

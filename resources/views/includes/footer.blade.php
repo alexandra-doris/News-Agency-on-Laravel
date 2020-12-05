@@ -49,7 +49,7 @@
           <div class="col-md-4" style="background-color:rgba(0, 0, 0, 0.7); padding: 20px 20px">
             <div class="latest-posts" >
             <ul class="list-unstyled">
-            @foreach ($posts->slice(0, 3) as $post)
+            @foreach ($public_posts->slice(0, 3) as $post)
                 <li><a href="/post/{{$post->slug}}"><div class="post d-flex align-items-center" >
                   <div class="image" style="border:0px;background-color:rgba(255, 255, 255, 1)"><img src="{{asset('/storage/'.$post->image)}}" alt="..." class="img-fluid"></div>
                   <div class="title" style="color:white"><strong>{{$post->title}}</strong><span class="date last-meta" style="color:white">{{date('M d, Y', strtotime($post->created_at))}}</span></div>

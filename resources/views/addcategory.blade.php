@@ -12,9 +12,9 @@
         <div class="form-group">
         @csrf
         <label for="title">Title:</label><br>
-        <input type="text" name="title"></br>
+        <input type="text" name="title" value="{{old('title')}}"></br>
         <label for="description">Description:</label><br>
-        <textarea type="text" name="description"></textarea></br>
+        <textarea type="text" name="description">{{old('body')}}</textarea></br>
         <label for="image">Category Image:</label></br>
         <input type="file" name="image" id="image"></br>
 

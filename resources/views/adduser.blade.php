@@ -12,15 +12,15 @@
         <div class="form-group">
         @csrf
         <label for="fname">First name:</label><br>
-        <input type="text" name="fname"></br>
+        <input type="text" name="fname" value="{{old('fname')}}"></br>
         <label for="lname">Last name:</label><br>
-        <input type="text" name="lname"></br>
+        <input type="text" name="lname" value="{{old('lname')}}"></br>
         <label for="email">Email:</label><br>
-        <input type="text" name="email"></br>
+        <input type="text" name="email" value="{{old('email')}}"></br>
         <label for="password">Password:</label><br>
         <input type="password" name="password"></br>
         <label for="description">Description:</label><br>
-        <textarea type="text" name="description"></textarea></br>
+        <textarea type="text" name="description">{{old('description')}}</textarea></br>
         <label for="image">Profile Image:</label></br>
         <input type="file" name="image" id="image"></br>
         @if((Auth::user()->admin)===1)

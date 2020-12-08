@@ -12,11 +12,11 @@
         <div class="form-group">
         @csrf
         <label for="title">Title:</label><br>
-        <input type="text" name="title"></br>
-        <label for="subtitle">Subitle:</label><br>
-        <input type="text" name="subtitle"></br>
+        <input type="text" name="title" value="{{old('title')}}"></br>
+        <label for="subtitle">Excerpt:</label><br>
+        <textarea type="text" name="subtitle">{{old('subtitle')}}</textarea></br>
         <label for="body">Body:</label><br>
-        <textarea class="description" type="text" name="body"></textarea></br>
+        <textarea class="description" type="text" name="body">{{old('body')}}</textarea></br>
         <label for="category_id" class="control-block">Choose a category:</label></br>
         <select class="drop" id="category_id" name="category_id">
               @foreach($cats as $cat)

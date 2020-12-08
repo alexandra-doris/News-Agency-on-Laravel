@@ -16,7 +16,7 @@
         <label for="slug">Slug:</label><br>
         <input type="text" name="slug" value="{{$post->slug}}"></br>
         <label for="subtitle">Subitle:</label><br>
-        <input type="text" name="subtitle" value="{{$post->subtitle}}"></br>
+        <textarea type="text" name="subtitle">{{$post->subtitle}}</textarea></br>
         <label for="body">Body:</label><br>
         <textarea class="description" type="text" name="body">{{$post->body}}</textarea></br>
         <label for="category_id" class="control-block">Choose a category:</label></br>

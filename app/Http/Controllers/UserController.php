@@ -57,7 +57,7 @@ class UserController extends Controller
         $user->fname = $request->fname;
         $user->lname = $request->lname;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         $user->description = $request->description;
         if ($request->file('image')!=NULL)
         if ($request->file('image')->isValid()){

@@ -36,7 +36,7 @@ Route::get('/', function () {return view('home');})->name('home');
 
 Route::any ( '/search/post', function () {
     $q = Request::get ( 'q' );
-    $post_q = Post::where ( 'title', 'LIKE', '%' . $q . '%' )
+    $post_q = Post::where('status', 1)->where ( 'title', 'LIKE', '%' . $q . '%' )
     ->orWhere ( 'subtitle', 'LIKE', '%' . $q . '%' )
     ->orWhere ( 'body', 'LIKE', '%' . $q . '%' )->get ();
     if (count ( $post_q ) > 0)
@@ -128,7 +128,7 @@ View::composer(['*'], function($view){
     $users=User::Paginate(10);
     $cats=Category::Paginate(10);
     $posts=Post::orderBy('status', 'ASC')->orderBy('created_at', 'DESC')->simplepaginate(10);
-    $public_posts=Post::where('status', 1)->orderBy('created_at', 'DESC')->simplepaginate(3);
+    $public_posts=Post::where('status', 1)->orderBy('created_at', 'DESC')->simplepaginate(10);
 
     $view->with('auth_user',$auth_user)
     ->with('users',$users)

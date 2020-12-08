@@ -6,7 +6,7 @@
 
 <div class="row justify-content-center">
     <div class="col-auto">
-        <table class="table table-dark table-hover" style="width:800px; text-align:left">
+        <table class="table table-dark table-hover" style="width:90%; text-align:left">
             <tbody>
                 <thead>
                     <tr>
@@ -16,7 +16,7 @@
                         <th>Category</th>
                         <th>Status</th>
                         <th>Author</th>
-                        <th>Actions</th>
+                        <th width="180px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

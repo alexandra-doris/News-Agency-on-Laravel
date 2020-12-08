@@ -12,13 +12,20 @@
         </div>
       </div>
     </section>
-
-
-
+    @php
+      $public_posts->appends(['users'=>$users])->render();
+    @endphp
 
     <section class="featured-posts no-padding-top">
     <div class="container">
     @foreach($public_posts as $key => $post)
+                @php
+                $post_user;
+                foreach ($users as $user)
+                  if($user->id == $post->posted_by)
+                    $post_user=$user;
+                @endphp
+
         @if($key%2==0)
         <!-- Post-->
         <div class="row d-flex align-items-stretch">
@@ -38,8 +45,8 @@
                 </header>
                 <p>{{Str::limit($post->subtitle, 250)}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{asset('/storage/'.$users->where('id', $post->posted_by)->first()->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
-                    <div class="title" style="padding: 0 10px"><span>{{$users->where('id', $post->posted_by)->first()->fname}} {{$users->where('id', $post->posted_by)->first()->lname}}   </span></div></a>
+                    <div class="avatar"><img src="{{asset('/storage/'.$post_user->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
+                    <div class="title" style="padding: 0 10px"><span>{{$post_user->fname}} {{$post_user->lname}}   </span></div></a>
                   <div class="date"><i class="far fa-clock"></i> {{date('M d | Y', strtotime($post->created_at))}}</div>
                   <div class="comments"><i class="far fa-eye" style="padding: 0 10px"></i>{{$post->views}}</div>
                 </footer>
@@ -68,8 +75,8 @@
                 </header>
                 <p>{{Str::limit($post->subtitle, 250)}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{asset('/storage/'.$users->where('id', $post->posted_by)->first()->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
-                    <div class="title" style="padding: 0 10px"><span>{{$users->where('id', $post->posted_by)->first()->fname}} {{$users->where('id', $post->posted_by)->first()->lname}}   </span></div></a>
+                    <div class="avatar"><img src="{{asset('/storage/'.$post_user->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
+                    <div class="title" style="padding: 0 10px"><span>{{$post_user->fname}} {{$post_user->lname}}   </span></div></a>
                   <div class="date"><i class="far fa-clock"></i> {{date('M d | Y', strtotime($post->created_at))}}</div>
                   <div class="comments"><i class="far fa-eye" style="padding: 0 10px"></i>{{$post->views}}</div>
                 </footer>
@@ -80,8 +87,9 @@
         @endif
 
     @endforeach
-    </div>
     <!--<div style="padding: 10px;">{{$public_posts->links()}}</div>-->
+    </div>
+
     </section>
 @endsection
 

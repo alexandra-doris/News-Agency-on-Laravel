@@ -6,14 +6,14 @@
 
 <div class="row justify-content-center">
     <div class="col-auto">
-        <table class="table table-dark table-hover" style="width:800px; text-align:left">
+        <table class="table table-dark table-hover" style="width:90%; text-align:left">
             <tbody>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Title</th>
                         <th>Slug</th>
-                        <th>Actions</th>
+                        <th width="300px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

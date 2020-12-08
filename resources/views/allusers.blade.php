@@ -6,17 +6,17 @@
 
 <div class="row justify-content-center">
     <div class="col-auto">
-        <table class="table table-dark table-hover" style="width:800px; text-align:left">
+        <table class="table table-dark table-hover" style="width:90%; text-align:left">
             <tbody>
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>    </th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th width="180px">First Name</th>
+                        <th width="180px">Last Name</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Actions</th>
+                        <th width="130px">Actions</th>
                     </tr>
                 </thead>
                 <tbody>

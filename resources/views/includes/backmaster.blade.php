@@ -66,7 +66,9 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+            @if ((Auth::user()->admin)===1)
                 <a class="collapse-item {{ request()->is('admin/newcategory') ? 'active' : '' }}" href="/admin/newcategory">Add New Category</a>
+            @endif
                 <a class="collapse-item {{ request()->is('admin/category') ? 'active' : '' }}" href="/admin/category">View All Categories</a>
             </div>
         </div>

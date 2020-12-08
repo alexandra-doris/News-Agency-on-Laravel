@@ -17,8 +17,9 @@
         <textarea type="text" name="description">{{old('body')}}</textarea></br>
         <label for="image">Category Image:</label></br>
         <input type="file" name="image" id="image"></br>
-
+        @if ((Auth::user()->admin)===1)
         </br><button type="submit" class="btn btn-primary">Create Category</button>
+        @endif
         </div>
     </form>
 

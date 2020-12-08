@@ -59,6 +59,8 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->description = $request->description;
+        if($request->admin)
+            $user->admin = $request->admin;
         if ($request->file('image')!=NULL)
         if ($request->file('image')->isValid()){
             if(strcmp($user->image, "images/users/default-avatar.png")!==0)

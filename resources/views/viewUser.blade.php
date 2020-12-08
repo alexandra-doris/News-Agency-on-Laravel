@@ -28,7 +28,8 @@
         <label for="image">Profile Image:</label></br>
         <input type="file" name="image"></br>
         @endif
-        @if((Auth::user()->admin)===1)
+        @if ($user->id===1)<!--admin user with id 1-->
+        @elseif((Auth::user()->admin)===1)
         <input type="radio" id="editor" name="admin" value=1 @if($user->admin===1) checked="checked" @endif>
         <label for="admin" style="padding-top:10px">Editor</label>
         <input type="radio" id="writer" name="admin" value=0  @if($user->admin===0) checked="checked" @endif>
@@ -40,7 +41,8 @@
         </br><button type="submit" class="btn btn-primary">Save changes</button>
         @endif
     </form>
-    @if ((Auth::user()->admin)===1)
+    @if ($user->id===1)<!--admin user with id 1-->
+    @elseif ((Auth::user()->admin)===1)
     </br><a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-primary">Delete user</a>
     @elseif ((Auth::user()->id)===$user->id)
     </br><a href="#" data-toggle="modal" data-target="#deleteModal" class="btn btn-primary">Delete user</a>

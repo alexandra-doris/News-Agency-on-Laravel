@@ -25,7 +25,8 @@ class CreatePost extends FormRequest
     {
         return [
             //
-            'title' => 'required|unique:posts'
+            'title' => 'required|unique:posts',
+            'body' => 'max:65000'
         ];
     }
 }

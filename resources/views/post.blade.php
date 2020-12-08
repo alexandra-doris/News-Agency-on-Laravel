@@ -1,6 +1,8 @@
 @extends('includes.master')
 
 @section('content')
+<div class="container" >
+      <div class="row">
         <main class="post blog-post col-lg-8"> 
           <div class="container">
             <div class="post-single">
@@ -23,6 +25,9 @@
             </div>
           </div>
         </main>
+        @include('includes.sidebar')
+      </div>
+</div>
 @endsection
 
 @section('scripts')

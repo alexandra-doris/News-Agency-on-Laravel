@@ -9,14 +9,14 @@
 </head>
 <body>
 
-    <header class="header">@include('includes.header')</header>
+    <header class="header" style="padding-bottom:80px">@include('includes.header')</header>
 
     <!--Slider for home-->
     @if (Request::is('/'))
     @include('includes.slider')
     @endif
     @yield('scripts')
-    <div class="container" style="padding-top:20px">
+    <div style="padding-top:20px">
     @yield('content')
     </div>
 

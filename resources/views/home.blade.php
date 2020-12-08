@@ -26,10 +26,17 @@
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                  <div class="category"><a href="/category/{{$cats->where('name', $post->category)->first()->slug}}">{{$cats->where('name', $post->category)->first()->title}}</a></div><a href="/post/{{$post->slug}}">
+                  <div class="category">
+                  @foreach ($cats as $cat)
+                    @if ($cat->id === $post->category_id)
+                    <a href="/category/{{$cat->slug}}">
+                      {{$cat->title}}</a>
+                      @endif
+                  @endforeach
+                  </div><a href="/post/{{$post->slug}}">
                     <h2 class="h4">{{$post->title}}</h2></a>
                 </header>
-                <p>{{$post->subtitle}}</p>
+                <p>{{Str::limit($post->subtitle, 250)}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{asset('/storage/'.$users->where('id', $post->posted_by)->first()->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
                     <div class="title" style="padding: 0 10px"><span>{{$users->where('id', $post->posted_by)->first()->fname}} {{$users->where('id', $post->posted_by)->first()->lname}}   </span></div></a>
@@ -49,10 +56,17 @@
             <div class="text-inner d-flex align-items-center">
               <div class="content">
                 <header class="post-header">
-                    <div class="category"><a href="/category/{{$cats->where('name', $post->category)->first()->slug}}">{{$cats->where('name', $post->category)->first()->title}}</a></div><a href="/post/{{$post->slug}}">
+                    <div class="category">
+                    @foreach ($cats as $cat)
+                    @if ($cat->id === $post->category_id)
+                    <a href="/category/{{$cat->slug}}">
+                      {{$cat->title}}</a>
+                      @endif
+                    @endforeach
+                    </div><a href="/post/{{$post->slug}}">
                     <h2 class="h4">{{$post->title}}</h2></a>
                 </header>
-                <p>{!!Str::limit($post->body, 100)!!}</p>
+                <p>{{Str::limit($post->subtitle, 250)}}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                     <div class="avatar"><img src="{{asset('/storage/'.$users->where('id', $post->posted_by)->first()->image)}}" width="40px" height="auto" alt="..." class="img-fluid"></div>
                     <div class="title" style="padding: 0 10px"><span>{{$users->where('id', $post->posted_by)->first()->fname}} {{$users->where('id', $post->posted_by)->first()->lname}}   </span></div></a>
@@ -67,7 +81,7 @@
 
     @endforeach
     </div>
-    <!--<div style="padding: 10px;">{{$public_posts->links()}}</div> -->
+    <!--<div style="padding: 10px;">{{$public_posts->links()}}</div>-->
     </section>
 @endsection
 

@@ -1,5 +1,5 @@
       <!-- Main Navbar-->
-      <nav class="navbar navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg fixed-top" style="box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 3px 8px 0 rgba(0, 0, 0, 0.19); padding: 20px">
         <div class="search-area">
           <div class="search-area-inner d-flex align-items-center justify-content-center">
             <div class="close-btn"><i class="icon-close"></i></div>
@@ -15,9 +15,9 @@
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="container" >
           <!-- Navbar Brand -->
-          <div class="navbar-header d-flex align-items-center justify-content-between">
+          <div class="navbar-header d-flex align-items-center justify-content-between" >
             <!-- Navbar Brand --><a href="{{route('home')}}" class="navbar-brand">NewsAgency</a>
             <!-- Toggle Button-->
             <button type="button" data-toggle="collapse" data-target="#navbarcollapse" aria-controls="navbarcollapse" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span></span><span></span><span></span></button>
@@ -42,7 +42,6 @@
               <li class="nav-item"><a href="#" class="nav-link ">{{__('header.contact')}}</a>
               </li>
             </ul>
-            <div class="navbar-text"><a href="#" class="search-btn"><i class="fas fa-search"></i></a></div>
             <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">RO</a></ul>
           </div>
         </div>

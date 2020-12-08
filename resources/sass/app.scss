@@ -32,5 +32,23 @@
     background:#858796!important;
  }
 
+ /*.parallax{
+   background: no-repeat fixed;
+   -webkit-background-size:cover;
+   -moz-background-size:cover;
+   -o-background-size:cover;
+   -ms-background-size:cover;
+   background-size:cover;
+ }*/
 
  
+ .search-nav input[type=text] {
+   width: 130px;
+   -webkit-transition: width 0.4s ease-in-out;
+   transition: width 0.4s ease-in-out;
+ }
+ 
+ /* When the input field gets focus, change its width to 100% */
+ .search-nav input[type=text]:focus {
+   width: 30%;
+ }

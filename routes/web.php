@@ -25,6 +25,17 @@ use App\Models\Post;
 
 Route::get('/', function () {return view('home');})->name('home');
 
+Route::any ( '/search/post', function () {
+    $q = Request::get ( 'q' );
+    $post_q = Post::where ( 'title', 'LIKE', '%' . $q . '%' )
+    ->orWhere ( 'subtitle', 'LIKE', '%' . $q . '%' )
+    ->orWhere ( 'body', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $post_q ) > 0)
+        return view ( 'search',compact('post_q'));
+    else
+        return view ( 'search')->withMessage ( 'No Results found. Try to searching again!' );
+} )->name('search');
+
 //category
 
 Route::view('categories', 'categories')->name('categories');

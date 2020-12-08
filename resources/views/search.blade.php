@@ -1,21 +1,20 @@
 @extends('includes.master')
 
 @section('content')
-<div class="container" >
         <div class="row">
         <!-- Latest Posts -->
         <main class="posts-listing col-lg-8"> 
-        <h1>{{$cat->title}}</h1>
+        <h1>Search results:</h1>
           <div class="container">
+          @if(isset($post_q))
             <div class="row">
               <!-- post -->
-              @foreach ($posts_cat as $post)
-              <div class="post col-xl-6" >
+              @foreach ($post_q as $post)
+              <div class="post col-xl-6">
                 <div class="post-thumbnail"><a href="post.html"><img src="{{asset('/storage/'.$post->image)}}" style="background-color:rgba(0, 0, 0, 0.8)" alt="..." class="img-fluid"></a></div>
                 <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
                     <div class="date meta-last">{{date('M d | Y', strtotime($post->created_at))}}</div>
-                    <div class="category"><a href="/category/{{$cat->slug}}">{{$cat->title}}</a></div>
                   </div><a href="/post/{{$post->slug}}">
                     <h3 class="h4">{{$post->title}}</h3></a>
                   <p class="text-muted">{!!Str::limit($post->subtitle, 130)!!}</p>
@@ -26,16 +25,12 @@
                 </div>
               </div>@endforeach
              
-            </div>
+            </div>@endif
             <!-- Pagination -->
-            <nav aria-label="Page navigation example">
-            {{$posts_cat->links()}}
-            </nav>
           </div>
         </main>
         @include('includes.sidebar')
         </div>
-</div>
 @endsection
 
 @section('scripts')

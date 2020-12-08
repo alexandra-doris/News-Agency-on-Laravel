@@ -12,11 +12,11 @@
   </ol>
   <div class="carousel-inner" style="background:rgba(0,0,0, 0.9);" role="listbox">
   @foreach($public_posts->slice(0, 3) as $key => $post)
-  <div class="carousel-item {{$key == 0 ? 'active' : '' }}" style="background: url({{asset('/storage/'.$post->image)}})no-repeat center center fixed;">
-      <img class="d-block w-100" style="opacity: 0;" src="{{asset('/storage/'.$post->image)}}" width="auto" height="600px" alt="{{$post->title}}">
+  <div class="carousel-item parallax {{$key == 0 ? 'active' : '' }}" style="background: linear-gradient(200deg, rgba(0,0,0, 0.9),rgba(144,89,255, 0.3)), url({{asset('/storage/'.$post->image)}}) bottom center fixed;">
+      <img class="d-block w-100" style="opacity: 0;" src="{{asset('/storage/'.$post->image)}}" width="auto" height="400px" alt="{{$post->title}}">
       <div class="carousel-caption d-none d-md-block">
-        <a style="color:white" href="/post/{{$post->slug}}"><h4>{{$post->title}}</h4></a>
-        <p>{{$post->subtitle}}</p>
+        <a class="title" style="color:white;" href="/post/{{$post->slug}}"><h4>{{$post->title}}</h4></a>
+        <p>{{Str::limit($post->subtitle, 100)}}</p>
         </div>
   </div>
   @endforeach

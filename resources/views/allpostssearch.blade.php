@@ -16,6 +16,7 @@
                             </div>
                         </div>
                     </form>
+                    @if(isset($post_q))
     <div class="col-auto">
         <table class="table table-dark table-hover" style="width:90%; text-align:left">
             <tbody>
@@ -31,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($posts as $post)
+                @foreach($post_q as $post)
                     <tr>
                         <td>{{$post->id}}</td>
                         <td>{{$post->title}}</td>
@@ -64,6 +65,13 @@
         </table>
         {{$posts->links()}}
     </div>
+    @else
+    <div style="width:100%; margin:0 12px">
+    <div class="alert alert-primary" role="alert">
+    {{ $message}}</br>
+	</div></div>
+    @endif
+
 </div>
 @endsection
 

@@ -30,7 +30,7 @@
                 </li>
                 
                 <li><a href="/admin/users/{{$auth_user->id}}"><div class="post d-flex align-items-center" >
-                  <div class="image"><img src="{{asset('/storage/'.$auth_user->image)}}" width="50px" height="auto" alt="..." class="img-fluid"></div>
+                  <div class="image avatar"><img src="{{asset('/storage/'.$auth_user->image)}}" width="50px" height="auto" alt="..." class="img-fluid"></div>
                 </div></a></li>
                 <li><a href="/admin/users/{{$auth_user->id}}"><div class="post d-flex align-items-center" >
                   <div class="title" style="color:white"><strong>{{$auth_user->fname}} {{$auth_user->lname}}</strong></div>
@@ -77,7 +77,7 @@
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top:200px">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel" style="color:black">Ready to Leave?</h5>
             <button class="close" type="button" data-dismiss="modal" aria-label="Close">

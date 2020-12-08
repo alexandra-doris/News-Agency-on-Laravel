@@ -110,6 +110,18 @@ Route::post('/admin/post/update/{id}', [PostController::class, 'updatePost'])->n
 
 Route::get('/admin/post/delete/{id}', [PostController::class, 'deletePost'])->name('deletepost');
 
+Route::any ( '/admin/search', function () {
+    $q = Request::get ( 'q' );
+    $post_q = Post::where ( 'title', 'LIKE', '%' . $q . '%' )
+    ->orWhere ( 'subtitle', 'LIKE', '%' . $q . '%' )
+    ->orWhere ( 'body', 'LIKE', '%' . $q . '%' )->get ();
+    if (count ( $post_q ) > 0)
+        return view ( 'allpostssearch',compact('post_q'));
+    else
+        return view ( 'allpostssearch')->withMessage ( 'No Results found. Try to searching again!' );
+} )->name('searchadmin');
+
+
 });
 
 // login

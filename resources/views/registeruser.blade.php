@@ -1,7 +1,7 @@
 @extends('includes.master')
 
 @section('content')
-
+<div class="container">
     <h1>Register New User</h1>
     
     @include('includes.validation')
@@ -25,7 +25,7 @@
         </br><button type="submit" class="btn btn-primary">Create user</button>
         </div>
     </form>
-
+</div>
 @endsection
 
 

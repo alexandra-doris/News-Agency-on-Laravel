@@ -26,7 +26,10 @@
                 </div>
               </div>@endforeach
              
-            </div>@endif
+            </div>@else
+            <div class="alert alert-primary" role="alert">
+              {{ $message}}</br>
+            @endif
             <!-- Pagination -->
           </div>
         </main>

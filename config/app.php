@@ -100,6 +100,11 @@ return [
     */
     'alt_langs' => array ('ro', 'de'),
     'locales' => ['en', 'ro', 'de'],
+    'languages' =>[
+        'en' => 'English',
+        'ro' => 'Romana',
+        'de' => 'Deutsche'
+    ],
 
     /**
     *  Prefix of selected locale  - leave empty (set in runtime)

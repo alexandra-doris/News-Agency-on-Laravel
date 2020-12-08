@@ -1,6 +1,7 @@
 @extends('includes.master')
 
 @section('content')
+<div class="container" >
         <div class="row">
         <!-- Latest Posts -->
         <main class="posts-listing col-lg-8"> 
@@ -31,6 +32,7 @@
         </main>
         @include('includes.sidebar')
         </div>
+</div>
 @endsection
 
 @section('scripts')

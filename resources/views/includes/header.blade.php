@@ -25,10 +25,10 @@
           <!-- Navbar Menu -->
           <div id="navbarcollapse" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item"><a href="{{route('home')}}" class="nav-link active ">{{__('header.home')}}</a>
+              <li class="nav-item"><a href="{{route('home')}}" class="nav-link {{ (request()->is('/')) ? 'active' : '' }} ">{{__('header.home')}}</a>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle {{ (request()->is('category*')) ? 'active' : '' }}" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{__('header.categories')}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -42,7 +42,10 @@
               <li class="nav-item"><a href="#" class="nav-link ">{{__('header.contact')}}</a>
               </li>
             </ul>
-            <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">RO</a></ul>
+            @php $locale = session()->get('applocale'); @endphp
+            <ul class="langs navbar-text"><a href="/lang/en" @if( $locale ==='en') class="active" @endif @if( $locale === null) class="active" @endif>EN</a>
+                  <span>           </span><a href="/lang/ro" @if( $locale ==='ro') class="active" @endif>RO</a>
+                  <span>           </span><a href="/lang/de" @if( $locale ==='de') class="active" @endif>DE</a></ul>
           </div>
         </div>
       </nav>

@@ -30,7 +30,7 @@
     </li>
 
     <!-- Nav Items - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('admin') ? 'active' : '' }} {{ request()->is('admin/newuser') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
             aria-expanded="true" aria-controls="collapseOne">
             <i class="fas fa-angle-right"></i>
@@ -38,13 +38,13 @@
         </a>
         <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/newuser">Add New User</a>
-                <a class="collapse-item" href="/admin">View All Users</a>
+                <a class="collapse-item {{ request()->is('admin/newuser') ? 'active' : '' }}" href="/admin/newuser">Add New User</a>
+                <a class="collapse-item {{ request()->is('admin') ? 'active' : '' }}" href="/admin">View All Users</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('admin/newpost') ? 'active' : '' }} {{ request()->is('admin/post*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
             aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-angle-right"></i>
@@ -52,13 +52,13 @@
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/newpost">Add New Article</a>
-                <a class="collapse-item" href="/admin/post">View All Articles</a>
+                <a class="collapse-item {{ request()->is('admin/newpost') ? 'active' : '' }}" href="/admin/newpost">Add New Article</a>
+                <a class="collapse-item {{ request()->is('admin/post') ? 'active' : '' }}" href="/admin/post">View All Articles</a>
             </div>
         </div>
     </li>
 
-    <li class="nav-item">
+    <li class="nav-item {{ request()->is('admin/newcategory') ? 'active' : '' }} {{ request()->is('admin/category*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
             aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-angle-right"></i>
@@ -66,8 +66,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="/admin/newcategory">Add New Category</a>
-                <a class="collapse-item" href="/admin/category">View All Categories</a>
+                <a class="collapse-item {{ request()->is('admin/newcategory') ? 'active' : '' }}" href="/admin/newcategory">Add New Category</a>
+                <a class="collapse-item {{ request()->is('admin/category') ? 'active' : '' }}" href="/admin/category">View All Categories</a>
             </div>
         </div>
     </li>

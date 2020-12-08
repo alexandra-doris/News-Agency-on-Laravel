@@ -7,6 +7,8 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\LocalizationController;
+
 
 use App\Models\Category;
 use App\Models\User;
@@ -22,6 +24,13 @@ use App\Models\Post;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('lang/{lang}',[LocalizationController::class, 'switchLang']);
+
+Route::group(['middleware'=>'language'],function ()
+{
+    //your translation routes
+    Route::get('/', function () {return view('home');})->name('home');
+});
 
 Route::get('/', function () {return view('home');})->name('home');
 

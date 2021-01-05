@@ -57,7 +57,8 @@ class UserController extends Controller
         $user->fname = $request->fname;
         $user->lname = $request->lname;
         $user->email = $request->email;
-        $user->password = Hash::make($request->password);
+        if(strcmp($user->password,$request->password)!=0)
+            $user->password = Hash::make($request->password);
         $user->description = $request->description;
         if($request->admin)
             $user->admin = $request->admin;

@@ -36,7 +36,9 @@ Route::get('/', function () {return view('home');})->name('home');
 
 Route::any ( '/search/post', function () {
     $q = Request::get ( 'q' );
-    $post_q = Post::where('status', 1)->where ( 'title', 'LIKE', '%' . $q . '%' )
+    $post_q = Post::where('status', '!=','0');
+    if ( $post_q )
+    $post_q = $post_q->where ( 'title', 'LIKE', '%' . $q . '%' )
     ->orWhere ( 'subtitle', 'LIKE', '%' . $q . '%' )
     ->orWhere ( 'body', 'LIKE', '%' . $q . '%' )->get ();
     if (count ( $post_q ) > 0)

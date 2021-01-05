@@ -81,7 +81,11 @@ class PostController extends Controller
             $post->image = substr($post->image, strlen('public/'));
         }
         $post->posted_by=$request->posted_by;
+        
+        $admin_author=Auth::user(); //change status only if admin
+        if($admin_author->admin==1)
         $post->status=$request->status;
+        
         $post->category_id=$request->category_id;
 
         $post->save();

@@ -60,8 +60,6 @@ class UserController extends Controller
         if(strcmp($user->password,$request->password)!=0)
             $user->password = Hash::make($request->password);
         $user->description = $request->description;
-        if($request->admin)
-            $user->admin = $request->admin;
         if ($request->file('image')!=NULL)
         if ($request->file('image')->isValid()){
             if(strcmp($user->image, "images/users/default-avatar.png")!==0)
@@ -69,6 +67,8 @@ class UserController extends Controller
             $user->image = $request->image->store('public/images/users');
             $user->image = substr($user->image, strlen('public/'));
         }
+        if($id!= 1)
+            $user->admin=$request->admin;
 
         $user->save();
         return redirect()->back()->with('success', 'User has been updated successfuly.');
